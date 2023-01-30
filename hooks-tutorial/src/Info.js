@@ -1,58 +1,30 @@
-//// App.js
-// import { useState } from "react";
-// import Info from "./Info";
+import { useReducer } from "react";
 
-// const App = () => {
-//   const [visible, setVisible] = useState(false);
-
-//   const onVisible = () => {
-//     setVisible(!visible);
-//   };
-
-//   return (
-//     <>
-//       <button onClick={onVisible}>{visible ? "보이기" : "숨기기"}</button>
-//       <hr />
-//       {visible && <Info />}
-//     </>
-//   );
-// };
-
-// export default App;
-
-import { useState, useEffect } from "react";
+function reducer(state, action) {
+  return {
+    ...state,
+    [action.name]: action.value,
+  };
+}
 
 const Info = () => {
-  const [name, setName] = useState("");
-  const [nickname, setNickname] = useState("");
+  const [state, dispatch] = useReducer(reducer, {
+    name: "",
+    nickname: "",
+  });
+  const { name, nickname } = state;
 
-  useEffect(() => {
-    console.log("effect");
-    console.log(name);
-
-    return () => {
-      console.log("cleanup");
-      console.log(name);
-    };
-  }, []);
-
-  const onChangeName = (e) => {
-    setName(e.target.value);
-  };
-
-  const onChangeNickname = (e) => {
-    setNickname(e.target.value);
+  const onChange = (e) => {
+    dispatch(e.target);
   };
 
   return (
     <div>
-      <input type="text" value={name} onChange={onChangeName} />
-      <input type="text" value={nickname} onChange={onChangeNickname} />
-
-      <p>
-        이름: {name} <br />
-        닉네임: {nickname}
-      </p>
+      <input type="text" name="name" value={name} onChange={onChange} />
+      <input type="text" name="nickname" value={nickname} onChange={onChange} />
+      <br />
+      이름: {name} <br />
+      닉네임: {nickname}
     </div>
   );
 };
