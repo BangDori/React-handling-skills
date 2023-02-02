@@ -11,6 +11,7 @@ const TodoInsert = ({ onInsert }) => {
   const [value, setValue] = useState('');
 
   const onChange = useCallback((e) => {
+    console.log('onChange');
     setValue(e.target.value);
   }, []);
 
@@ -20,8 +21,9 @@ const TodoInsert = ({ onInsert }) => {
       setValue('');
 
       e.preventDefault();
+      console.log('dd');
     },
-    [onInsert, value],
+    [value, onInsert],
   );
 
   return (
