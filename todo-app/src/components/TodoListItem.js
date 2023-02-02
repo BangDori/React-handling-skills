@@ -16,7 +16,7 @@ const TodoListItem = ({ todo, onRemove, onToggle, style }) => {
   const { id, text, checked } = todo;
 
   return (
-    <div className="TodoListItem-virtualized" stlye={style}>
+    <div className="TodoListItem-virtualized" style={style}>
       <div className="TodoListItem">
         <div
           className={cn('checkbox', { checked })}

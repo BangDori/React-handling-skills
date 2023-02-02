@@ -28,7 +28,7 @@ const TodoList = ({ todos, onRemove, onToggle }) => {
     <List
       className="TodoList"
       width={512}
-      height={513}
+      height={456}
       rowCount={todos.length}
       rowHeight={57}
       rowRenderer={rowRenderer}
