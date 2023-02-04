@@ -80,7 +80,7 @@ const Categories = () => {
             key={c.name}
             className={({ isActive }) => (isActive ? "active" : "")}
             exact={c.name === "all" ? "true" : "false"}
-            to={c.name === "all" ? "" : `/${c.name}`}
+            to={c.name === "all" ? "/" : `/${c.name}`}
           >
             {c.text}
           </Category>
