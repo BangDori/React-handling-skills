@@ -3,12 +3,13 @@ import Categories from "../components/Categories";
 import NewsList from "../components/NewsList";
 
 const NewsPage = () => {
-  const { category } = useParams();
+  const params = useParams();
+  const category = params.category || "all";
 
   return (
     <>
       <Categories />
-      <NewsList category={category === undefined ? "" : category} />
+      <NewsList category={category} />
     </>
   );
 };
