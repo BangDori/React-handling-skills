@@ -1,3 +1,6 @@
+/**
+ * 액션 함수와 액션생성자 함수를 함께 넣어서 관리하는 모듈파일
+ */
 import { createAction, handleActions } from 'redux-actions';
 import produce from 'immer';
 
@@ -6,6 +9,7 @@ const INSERT = 'todos/INSERT';
 const TOGGLE = 'todos/TOGGLE';
 const REMOVE = 'todos/REMOVE';
 
+// 액션 생성함수
 const changeInput = createAction(CHANGE_INPUT, (input) => input);
 let id = 3;
 const insert = createAction(INSERT, (text) => ({
@@ -33,6 +37,10 @@ const initialState = {
   ],
 };
 
+/**
+ * Reducer의 역할
+ * switch문을 통해 관리하는 것이 아닌, handleActions 함수를 통해 관리
+ */
 const todos = handleActions(
   {
     [CHANGE_INPUT]: (state, { payload: input }) =>
