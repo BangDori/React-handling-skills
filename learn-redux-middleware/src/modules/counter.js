@@ -6,17 +6,29 @@ const DECREASE = "counter/DECREASE";
 const increase = createAction(INCREASE);
 const decrease = createAction(DECREASE);
 
-const initialState = {
-  number: 0,
+// 1초 뒤에 increase 혹은 decrease 함수를 디스패치
+const increaseAsync = () => (dispatch) => {
+  setTimeout(() => {
+    dispatch(increase());
+  }, 1000);
 };
+
+const decreaseAsync = () => (dispatch) => {
+  setTimeout(() => {
+    dispatch(decrease());
+  }, 1000);
+};
+
+const initialState = 0;
 
 const counter = handleActions(
   {
-    [INCREASE]: (state) => ({ number: state.number + 1 }),
-    [DECREASE]: (state) => ({ number: state.number - 1 }),
+    [INCREASE]: (state) => state + 1,
+    [DECREASE]: (state) => state - 1,
   },
   initialState
 );
 
 export { increase, decrease };
+export { increaseAsync, decreaseAsync };
 export default counter;
