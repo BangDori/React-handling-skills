@@ -1,7 +1,11 @@
 import ColorBox from "./components/ColorBox";
-import { ColorProvider } from "./contexts/color";
 import SelectColors from "./components/SelectColors";
+import { ColorProvider } from "./contexts/color";
 
+/**
+ * Provider를 사용하면 Context의 value를
+ * 변경할 수 있습니다.
+ */
 const App = () => {
   return (
     <ColorProvider>

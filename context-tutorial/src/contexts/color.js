@@ -1,5 +1,8 @@
 import { createContext, useState } from "react";
 
+/**
+ * 새로운 context 생성, 파라메터에는 기본 상태
+ */
 const ColorContext = createContext({
   state: { color: "black", subcolor: "red" },
   actions: {
@@ -22,8 +25,10 @@ const ColorProvider = ({ children }) => {
   );
 };
 
+// const ColorConsumer = ColorContext.Consumer와 같은 의미
 const { Consumer: ColorConsumer } = ColorContext;
 
+// ColorProvider와 ColorConsumer 내보내기
 export { ColorProvider, ColorConsumer };
 
 export default ColorContext;
